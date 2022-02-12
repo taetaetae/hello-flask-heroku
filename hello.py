@@ -21,7 +21,8 @@ def meme():
         resposne = requests.get(
             url=f"https://m.land.naver.com/complex/getComplexArticleList?hscpNo={id}&tradTpCd=A1&order=prc&page={page}",
             headers={
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36"
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
+                "Referer": "https://m.land.naver.com/"
             }
         ).json()
 
@@ -53,7 +54,8 @@ def jeonse():
         resposne = requests.get(
             url=f"https://m.land.naver.com/complex/getComplexArticleList?hscpNo={id}&tradTpCd=B1&order=prc_&page={page}",
             headers={
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36"
+                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
+                "Referer": "https://m.land.naver.com/"
             }
         ).json()
 
