@@ -19,7 +19,7 @@ def meme():
         if minArticle :
             break
         resposne = requests.get(
-            url=f"https://new.land.naver.com/api/articles/complex/{id}?realEstateType=APT%3AABYG%3AJGC&tradeType=A1&tag=%3A%3A%3A%3A%3A%3A%3A%3A&rentPriceMin=0&rentPriceMax=900000000&priceMin=0&priceMax=900000000&areaMin=0&areaMax=900000000&oldBuildYears&recentlyBuildYears&minHouseHoldCount&maxHouseHoldCount&showArticle=false&sameAddressGroup=false&minMaintenanceCost&maxMaintenanceCost&priceType=RETAIL&directions=&page={page}&complexNo={id}&buildingNos=&type=list&order=prc",
+            url=f"https://new.land.naver.com/api/articles/complex/{id}?realEstateType=APT&tradeType=A1&priceType=RETAIL&&page={page}&type=list&order=prc",
             headers={
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
                 "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NDQ1ODY5NzIsImV4cCI6MTY0NDU5Nzc3Mn0.jpa_rrmB3Hs2xwqQSfbgPRWcoYq0Bz5i4QUnDRrUYBE"
@@ -54,7 +54,7 @@ def jeonse():
         if maxArticle:
             break
         resposne = requests.get(
-            url=f"https://new.land.naver.com/api/articles/complex/{id}?realEstateType=APT%3AABYG%3AJGC&tradeType=B1&tag=%3A%3A%3A%3A%3A%3A%3A%3A&rentPriceMin=0&rentPriceMax=900000000&priceMin=0&priceMax=900000000&areaMin=0&areaMax=900000000&oldBuildYears&recentlyBuildYears&minHouseHoldCount&maxHouseHoldCount&showArticle=false&sameAddressGroup=false&minMaintenanceCost&maxMaintenanceCost&priceType=RETAIL&directions=&page={page}&complexNo={id}&buildingNos=&type=list&order=prcDesc",
+            url=f"https://new.land.naver.com/api/articles/complex/{id}?realEstateType=APT&tradeType=B1&priceType=RETAIL&&page={page}&type=list&order=prcDesc",
             headers={
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
                 "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NDQ1ODY5NzIsImV4cCI6MTY0NDU5Nzc3Mn0.jpa_rrmB3Hs2xwqQSfbgPRWcoYq0Bz5i4QUnDRrUYBE"
