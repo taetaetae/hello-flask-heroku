@@ -1,11 +1,11 @@
-import requests, sys
+import requests, sys, logging
 from flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello dduzi!'
+    return 'Hello World!'
 
 @app.route('/meme', methods=['GET'])
 def meme():
@@ -24,9 +24,11 @@ def meme():
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
                 "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NDQ1ODY5NzIsImV4cCI6MTY0NDU5Nzc3Mn0.jpa_rrmB3Hs2xwqQSfbgPRWcoYq0Bz5i4QUnDRrUYBE"
             }
-        ).json()
+        )
+        logging.info(resposne.status_code)
+        logging.info(resposne.text)
 
-        for article in resposne['articleList']:
+        for article in resposne.json()['articleList']:
             if article['area2'] == 84:
                 floor = str(article['floorInfo']).split("/")[0]
                 if floor.isdigit() and int(floor) < 5:
@@ -57,9 +59,11 @@ def jeonse():
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36",
                 "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlJFQUxFU1RBVEUiLCJpYXQiOjE2NDQ1ODY5NzIsImV4cCI6MTY0NDU5Nzc3Mn0.jpa_rrmB3Hs2xwqQSfbgPRWcoYq0Bz5i4QUnDRrUYBE"
             }
-        ).json()
+        )
+        logging.info(resposne.status_code)
+        logging.info(resposne.text)
 
-        for article in resposne['articleList']:
+        for article in resposne.json()['articleList']:
             if article['area2'] == 84:
                 dealOrWarrantPrc = str(article['dealOrWarrantPrc']).split('억')
                 firstPrc = int(dealOrWarrantPrc[0]) * 10000
@@ -69,6 +73,11 @@ def jeonse():
                     maxArticle = article
         page = page + 1
     return str(max)
+
+if __name__ != '__main__':
+    gunicorn_logger = logging.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
 
 if __name__ == '__main__':
     app.run()
